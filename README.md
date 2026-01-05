@@ -1,119 +1,90 @@
 # 📝 API de Lista de Tarefas (To-Do List)
 
-Uma API REST simples para gerenciar tarefas, desenvolvida para aprender conceitos fundamentais de backend.
+Desenvolvi essa API REST para organizar minhas tarefas do dia a dia enquanto aprendia os fundamentos de backend com Node.js.
 
-## 🎯 Conceitos Aprendidos
+## Sobre o Projeto
 
-- **API REST**: Interface de programação que segue padrões arquiteturais
-- **Rotas HTTP**: GET (buscar), POST (criar), PUT (atualizar), DELETE (remover)
-- **Servidor Express**: Framework minimalista para Node.js
-- **Dados em Memória**: Armazenamento temporário usando arrays JavaScript
+Esse foi um dos meus primeiros projetos backend. A ideia surgiu porque eu precisava entender na prática como funcionam as APIs que a gente consome no frontend. Decidi criar algo útil pra mim: um gerenciador de tarefas simples.
 
-## 🚀 Como Executar
+O projeto usa dados em memória (sem banco de dados), justamente porque meu foco aqui era entender bem o fluxo de requisições HTTP antes de partir pro banco. 
 
-### 1. Instalar dependências
+## O que aprendi desenvolvendo
+
+- Como estruturar rotas em uma API REST
+- Os verbos HTTP na prática (GET, POST, PUT, DELETE)
+- Organização de pastas num projeto Node
+- Como testar endpoints usando Postman
+
+## Tecnologias
+
+- Node.js
+- Express
+
+## Como rodar
+
 ```bash
+# Instala as dependências
 npm install
-```
 
-### 2. Iniciar o servidor
-```bash
+# Roda o servidor
 npm start
-```
 
-### 3. Modo desenvolvimento (com auto-reload)
-```bash
+# Ou em modo dev (reinicia sozinho quando salva)
 npm run dev
 ```
 
-O servidor estará rodando em: `http://localhost:3000`
+Acessa em: `http://localhost:3000`
 
-## 📡 Endpoints da API
+## Rotas
 
-### Listar todas as tarefas
-```http
-GET /tarefas
-```
+| Método | Rota | O que faz |
+|--------|------|-----------|
+| GET | /tarefas | Lista todas as tarefas |
+| GET | /tarefas/:id | Busca uma tarefa pelo ID |
+| POST | /tarefas | Cria uma tarefa nova |
+| PUT | /tarefas/:id | Atualiza uma tarefa |
+| DELETE | /tarefas/:id | Remove uma tarefa |
 
-### Buscar uma tarefa específica
-```http
-GET /tarefas/:id
-```
+### Criando uma tarefa
 
-### Criar nova tarefa
-```http
+```json
 POST /tarefas
-Content-Type: application/json
 
 {
-  "titulo": "Minha tarefa",
-  "descricao": "Descrição opcional"
+  "titulo": "Estudar Node.js",
+  "descricao": "Revisar módulos e rotas"
 }
 ```
 
-### Atualizar tarefa
-```http
-PUT /tarefas/:id
-Content-Type: application/json
+### Marcando como concluída
+
+```json
+PUT /tarefas/1
 
 {
-  "titulo": "Título atualizado",
-  "descricao": "Nova descrição",
   "concluida": true
 }
 ```
 
-### Deletar tarefa
-```http
-DELETE /tarefas/:id
-```
-
-## 📁 Estrutura do Projeto
+## Estrutura
 
 ```
-├── src/
-│   ├── server.js          # Arquivo principal do servidor
-│   ├── routes/
-│   │   └── tarefas.js     # Rotas da API de tarefas
-│   └── data/
-│       └── tarefas.js     # Dados em memória
-├── package.json           # Dependências e scripts
-└── README.md              # Este arquivo
+src/
+├── server.js        # Arquivo principal
+├── routes/
+│   └── tarefas.js   # Rotas da API
+└── data/
+    └── tarefas.js   # Onde ficam os dados
 ```
 
-## 🧪 Testando a API
+## Próximos passos
 
-Use ferramentas como:
-- **Postman**
-- **Insomnia**
-- **cURL** no terminal
-- Extensão **REST Client** do VS Code
+Pretendo evoluir esse projeto adicionando:
+- Banco de dados (PostgreSQL ou MongoDB)
+- Autenticação com JWT
+- Validação dos dados de entrada
+- Testes automatizados
 
-### Exemplo com cURL
+---
 
-```bash
-# Criar uma tarefa
-curl -X POST http://localhost:3000/tarefas \
-  -H "Content-Type: application/json" \
-  -d '{"titulo": "Estudar Node.js"}'
-
-# Listar tarefas
-curl http://localhost:3000/tarefas
-
-# Marcar como concluída
-curl -X PUT http://localhost:3000/tarefas/1 \
-  -H "Content-Type: application/json" \
-  -d '{"concluida": true}'
-
-# Deletar tarefa
-curl -X DELETE http://localhost:3000/tarefas/1
-```
-
-## 📚 Próximos Passos
-
-Após dominar este projeto, você pode:
-1. Adicionar persistência com banco de dados (MongoDB, PostgreSQL)
-2. Implementar autenticação (JWT)
-3. Adicionar validação de dados
-4. Criar testes automatizados
-5. Fazer deploy em serviços cloud (Railway, Render, Heroku)
+*Projeto desenvolvido para estudo de desenvolvimento backend.*
