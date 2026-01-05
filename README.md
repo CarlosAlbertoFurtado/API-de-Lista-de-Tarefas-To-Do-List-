@@ -1,66 +1,54 @@
-# 📝 API de Lista de Tarefas (To-Do List)
+# API de Tarefas
 
-Desenvolvi essa API REST para organizar minhas tarefas do dia a dia enquanto aprendia os fundamentos de backend com Node.js.
+API simples que fiz pra aprender backend com Node.js e Express.
 
-## Sobre o Projeto
+## Motivação
 
-Esse foi um dos meus primeiros projetos backend. A ideia surgiu porque eu precisava entender na prática como funcionam as APIs que a gente consome no frontend. Decidi criar algo útil pra mim: um gerenciador de tarefas simples.
+Queria entender como funciona uma API por baixo dos panos. Escolhi fazer um to-do list porque é um CRUD basico e da pra praticar tudo que precisa: rotas, requisições HTTP, organização de código.
 
-O projeto usa dados em memória (sem banco de dados), justamente porque meu foco aqui era entender bem o fluxo de requisições HTTP antes de partir pro banco. 
-
-## O que aprendi desenvolvendo
-
-- Como estruturar rotas em uma API REST
-- Os verbos HTTP na prática (GET, POST, PUT, DELETE)
-- Organização de pastas num projeto Node
-- Como testar endpoints usando Postman
-
-## Tecnologias
+## Stack
 
 - Node.js
 - Express
 
-## Como rodar
+## Rodando o projeto
 
 ```bash
-# Instala as dependências
 npm install
-
-# Roda o servidor
 npm start
+```
 
-# Ou em modo dev (reinicia sozinho quando salva)
+Servidor vai subir em http://localhost:3000
+
+Pra desenvolvimento com auto-reload:
+```bash
 npm run dev
 ```
 
-Acessa em: `http://localhost:3000`
+## Endpoints
 
-## Rotas
+| Metodo | Rota | Desc |
+|--------|------|------|
+| GET | /tarefas | lista todas |
+| GET | /tarefas/:id | busca uma |
+| POST | /tarefas | cria nova |
+| PUT | /tarefas/:id | atualiza |
+| DELETE | /tarefas/:id | deleta |
 
-| Método | Rota | O que faz |
-|--------|------|-----------|
-| GET | /tarefas | Lista todas as tarefas |
-| GET | /tarefas/:id | Busca uma tarefa pelo ID |
-| POST | /tarefas | Cria uma tarefa nova |
-| PUT | /tarefas/:id | Atualiza uma tarefa |
-| DELETE | /tarefas/:id | Remove uma tarefa |
+## Exemplos
 
-### Criando uma tarefa
-
+Criar tarefa:
 ```json
 POST /tarefas
-
 {
-  "titulo": "Estudar Node.js",
-  "descricao": "Revisar módulos e rotas"
+  "titulo": "Fazer algo",
+  "descricao": "opcional"
 }
 ```
 
-### Marcando como concluída
-
+Marcar como feita:
 ```json
 PUT /tarefas/1
-
 {
   "concluida": true
 }
@@ -70,21 +58,23 @@ PUT /tarefas/1
 
 ```
 src/
-├── server.js        # Arquivo principal
-├── routes/
-│   └── tarefas.js   # Rotas da API
-└── data/
-    └── tarefas.js   # Onde ficam os dados
+  server.js       # entrada da app
+  routes/
+    tarefas.js    # rotas
+  data/
+    tarefas.js    # onde guarda os dados
 ```
+
+## Obs
+
+Os dados ficam em memória, então se reiniciar o servidor perde tudo. Em projetos reais usaria MongoDB ou PostgreSQL.
 
 ## Próximos passos
 
-Pretendo evoluir esse projeto adicionando:
-- Banco de dados (PostgreSQL ou MongoDB)
-- Autenticação com JWT
-- Validação dos dados de entrada
-- Testes automatizados
+- Conectar num banco de dados
+- Adicionar autenticação
+- Deploy
 
 ---
 
-*Projeto desenvolvido para estudo de desenvolvimento backend.*
+Desenvolvido por Carlos Alberto Furtado
