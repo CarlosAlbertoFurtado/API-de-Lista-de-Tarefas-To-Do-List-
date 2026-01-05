@@ -1,0 +1,23 @@
+{
+  "name": "api-lista-tarefas",
+  "version": "1.0.0",
+  "description": "API REST de Lista de Tarefas para aprender conceitos de backend",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "keywords": [
+    "api",
+    "rest",
+    "nodejs",
+    "express",
+    "backend",
+    "todo"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
